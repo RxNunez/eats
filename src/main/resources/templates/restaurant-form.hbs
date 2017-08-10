@@ -39,7 +39,12 @@
         </div>
         <div class="form-group">
             <label for="neighborhood">Neighborhood:</label>
-            <input id="neighborhood" name="neighborhood" type="text">
+            <select id="neighborhood" name="neighborhood">
+                <option value="Downtown">Downtown</option>
+                <option value="Southeast">Southeast</option>
+                <option value="Northeast">Northeast</option>
+                <option value="St Johns">St. Johns</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="genre">Food Genre</label>
@@ -50,6 +55,7 @@
             <input id="favoriteDish" name="favoriteDish" type="text">
         </div>
         <div class="form-group">
+            <label for="rating">Rating:</label>
             <span class="star-cb-group">
               <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
               <input type="radio" id="rating-4" name="rating" value="4"  /><label for="rating-4">4</label>

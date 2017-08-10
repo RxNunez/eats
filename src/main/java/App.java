@@ -82,5 +82,6 @@ public class App {
             model.put("editPlace", place);
             return new ModelAndView(model, "restaurant-detail.hbs");
         }, new HandlebarsTemplateEngine());
+
     }
 }
