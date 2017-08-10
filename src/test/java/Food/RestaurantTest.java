@@ -6,9 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Guest on 8/10/17.
- */
+
 public class RestaurantTest {
     @Before
     public void setUp() throws Exception {
@@ -16,12 +14,12 @@ public class RestaurantTest {
 
     @After
     public void tearDown() throws Exception {
-
+        Restaurant.clearAllRestaurants();
     }
     @Test
     public void NewTestObjectGetsCorrectlyCreated_true() throws Exception {
         Restaurant testFood = helper();
-        assertEquals(true, testFood instanceof Restaurant);
+        assertEquals(true, testFood!=null );
     }
     @Test
     public void clearAllRestaurants() throws Exception {
@@ -30,9 +28,35 @@ public class RestaurantTest {
         Restaurant.clearAllRestaurants();
         assertEquals(0, Restaurant.getInstances().size());
     }
-
+    @Test
+    public void Restaurant_createsAUniqueId() throws Exception {
+        Restaurant testFood = helper();
+        Restaurant otherFood = new Restaurant("Tin Shed", "Northeast", "Brunch", "Egg scrambles", 5);
+        assertEquals(2, otherFood.getId());
+    }
+    @Test
+    public void Restaurant_findbyId() throws Exception {
+        Restaurant testFood = helper();
+        Restaurant otherFood = new Restaurant("Tin Shed", "Northeast", "Brunch", "Egg scrambles", 5);
+        assertEquals(1, Restaurant.findById(testFood.getId()).getId());
+        assertEquals("Tin Shed", Restaurant.findById(otherFood.getId()).getRestaurantName());
+    }
+    @Test
+    public void Restaurant_removeSpecificEntryById() throws Exception {
+        Restaurant testFood = helper();
+        Restaurant otherFood = new Restaurant("Tin Shed", "Northeast", "Brunch", "Egg scrambles", 5);
+        testFood.deleteEntry(1);
+        assertEquals(1, Restaurant.getInstances().size());
+        assertEquals(Restaurant.getInstances().get(0).getId(), 2);
+    }
+    @Test
+    public void Restaurant_updateSpecificEntry() throws Exception {
+        Restaurant testFood = helper();
+        testFood.update("Tin Shed", "Northeast", "Brunch", "Egg scrambles", 5);
+        assertEquals("Brunch", testFood.getGenre());
+    }
 
     public Restaurant helper(){
-        return new Restaurant("Dar Salaam", "Northeast", "Middle Eastern", "Lunch Buffet", 5);
+        return new Restaurant("DarSalam", "Northeast", "Middle Eastern", "Lunch Buffet", 5);
     }
 }
