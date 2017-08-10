@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 
@@ -56,7 +58,17 @@ public class RestaurantTest {
         assertEquals("Brunch", testFood.getGenre());
     }
 
+    @Test
+    public void searchByNeighborhood() throws Exception {
+        Restaurant testFood = helper();
+        Restaurant otherFood = new Restaurant("Tin Shed", "Northeast", "Brunch", "Egg scrambles", 5);
+        Restaurant thirdFood = helper();
+        ArrayList test = Restaurant.searchByNeighborhood("Downtown");
+        assertEquals(2, test.size());
+
+    }
+
     public Restaurant helper(){
-        return new Restaurant("DarSalam", "Northeast", "Middle Eastern", "Lunch Buffet", 5);
+        return new Restaurant("DarSalam", "Downtown", "Middle Eastern", "Lunch Buffet", 5);
     }
 }

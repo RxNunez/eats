@@ -38,6 +38,15 @@ public class Restaurant {
         }
         return test;
     }
+    public static ArrayList<Restaurant> searchByNeighborhood(String neighborhood){
+        ArrayList<Restaurant> test = new ArrayList<>();
+        for (Restaurant instance : instances){
+            if(instance.getNeighborhood().equals(neighborhood)){
+                test.add(instance);
+            }
+        }
+        return test;
+    }
     public void deleteEntry (int id) {
         instances.remove(Restaurant.findById(id));
     }

@@ -82,6 +82,18 @@ public class App {
             model.put("editPlace", place);
             return new ModelAndView(model, "restaurant-detail.hbs");
         }, new HandlebarsTemplateEngine());
-
+        //Go to search page
+        get("/search",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model,"search.hbs");
+        }, new HandlebarsTemplateEngine());
+        //Post: generate search results based on form input
+        post("/search", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String formInput = request.queryParams("neighborhood");
+            ArrayList<Restaurant> listOfPlaces = Restaurant.searchByNeighborhood(formInput);
+            model.put("restaurants", listOfPlaces);
+            return new ModelAndView(model,"search.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }

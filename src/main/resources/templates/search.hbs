@@ -1,0 +1,33 @@
+{{#partial "content"}}
+    <h1>Search by:</h1>
+    <form action="/search" method="post">
+        <div class="form-group">
+            <label for="neighborhood">Neighborhood:</label>
+            <select id="neighborhood" name="neighborhood" onchange="this.form.submit()">
+                <option>Select...</option>
+                <option value="Downtown">Downtown</option>
+                <option value="Southeast">Southeast</option>
+                <option value="Northeast">Northeast</option>
+                <option value="St Johns">St. Johns</option>
+            </select>
+        </div>
+        <!--<button type="submit" class="btn btn-success">Submit!</button>-->
+    </form>
+
+    {{#if restaurants}}
+            {{#each restaurants}}
+                <h4>{{restaurantName}}</h4>
+                <ul>
+                    <li>Neighborhood: {{neighborhood}}</li>
+                    <li>Genre: {{genre}}</li>
+                    <li>Favorite dish: {{favoriteDish}}</li>
+                    <li>Rating: {{rating}}</li>
+                </ul>
+            {{/each}}
+
+    {{/if}}
+
+
+{{/partial}}
+
+{{> layout.hbs}}
