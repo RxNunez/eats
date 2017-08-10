@@ -44,6 +44,20 @@ public class App {
             model.put("editPlace", editPlace);
             return new ModelAndView(model, "restaurant-form.hbs");
         }, new HandlebarsTemplateEngine());
-        //
+        //post: Fix updated post
+        post("/restaurants/:id",(request, response) -> {
+            Map<String, Object>model = new HashMap<>();
+            ArrayList<Restaurant> listOfPlaces =Restaurant.getInstances();
+            String restaurantName = request.queryParams("restaurantName");
+            String neighborhood = request.queryParams("neighborhood");
+            String genre = request.queryParams("genre");
+            String favoriteDish = request.queryParams("favoriteDish");
+            Integer rating= Integer.parseInt(request.queryParams("rating"));
+            int idOfPLace = Integer.parseInt(request.params("id"));
+            Restaurant editPlace = Restaurant.findById(idOfPLace);
+            editPlace.update(restaurantName, neighborhood,genre,favoriteDish,rating);
+            model.put("restaurants", listOfPlaces);
+            return new ModelAndView(model,"index.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
