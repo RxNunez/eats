@@ -2,7 +2,7 @@
 
     {{#if editPlace}}
         <h3>Update {{editPlace.restaurantName}}:</h3>
-        <form method="post" action="/restaurants/{{editPlace.id}}">
+        <form method="post" action="/restaurants/{{editPlace.id}}/update">
         <div class="form-group">
             <label for="restaurantName">Restaurant Name:</label>
             <input id="restaurantName" name="restaurantName" type="text" value="{{editPlace.restaurantName}}">

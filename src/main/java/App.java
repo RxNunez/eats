@@ -37,7 +37,7 @@ public class App {
             return new ModelAndView(model,"index.hbs");
         }, new HandlebarsTemplateEngine());
         //get: Edit entry
-        get("/restaurants/:id", (request, response) -> {
+        get("/restaurants/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int idOfPlace = Integer.parseInt(request.params("id"));
             Restaurant editPlace = Restaurant.findById(idOfPlace);
@@ -45,7 +45,7 @@ public class App {
             return new ModelAndView(model, "restaurant-form.hbs");
         }, new HandlebarsTemplateEngine());
         //post: Fix updated post
-        post("/restaurants/:id",(request, response) -> {
+        post("/restaurants/:id/update",(request, response) -> {
             Map<String, Object>model = new HashMap<>();
             ArrayList<Restaurant> listOfPlaces = Restaurant.getInstances();
             String restaurantName = request.queryParams("restaurantName");
@@ -73,6 +73,14 @@ public class App {
             deletePlace.deleteEntry(idOfPlace);
             model.put("deletePlace", deletePlace);
             return new ModelAndView(model,"index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/restaurants/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int idOfPlace = Integer.parseInt(request.params("id"));
+            Restaurant place = Restaurant.findById(idOfPlace);
+            model.put("editPlace", place);
+            return new ModelAndView(model, "restaurant-detail.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }
