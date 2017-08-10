@@ -62,8 +62,12 @@ public class Restaurant {
     public String getFavoriteDish() {
         return favoriteDish;
     }
-    public int getRating() {
-        return rating;
+    public String getRating() {
+        int numRating = rating;
+        String starRating ="";
+        for (int i = 0; i < numRating; i++) {
+            starRating +="★";
+        } return starRating;
     }
     public static ArrayList<Restaurant> getInstances() {
         return instances;
