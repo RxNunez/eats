@@ -1,0 +1,13 @@
+{{#partial "content"}}
+    <h1>{{place.restaurantName}}</h1>
+    <ul>
+        <li>Neighborhood: {{place.neighborhood}}</li>
+        <li>Genre: {{place.genre}}</li>
+        <li>Favorite dish: {{place.favoriteDish}}</li>
+    </ul>
+    <p>
+        <a href="/restaurants/{{restaurant.id}}/update">Edit this entry</a><br>
+        <a href="/restaurants/{{restaurant.id}}/delete">DELETE this entry (no undo)</a>
+    </p>
+ {{/partial}}
+{{>layout.hbs}}
