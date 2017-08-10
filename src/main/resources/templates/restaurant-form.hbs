@@ -29,6 +29,7 @@
               <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
             </span>
         </div>
+        <a href="/{{editPlace.id}}/delete" class="btn btn-danger">Delete</a>
     {{else}}
         <h3>Add a new restaurant:</h3>
         <form method="post" action="/restaurants/new">

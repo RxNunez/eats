@@ -65,5 +65,14 @@ public class App {
             Restaurant.clearAllRestaurants();;
             return new ModelAndView(model,"index.hbs");
         }, new HandlebarsTemplateEngine());
+        //delete individual post
+        get("/:id/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPlace = Integer.parseInt(request.params("id"));
+            Restaurant deletePlace = Restaurant.findById(idOfPlace);
+            deletePlace.deleteEntry(idOfPlace);
+            model.put("deletePlace", deletePlace);
+            return new ModelAndView(model,"index.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
