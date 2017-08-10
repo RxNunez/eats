@@ -1,0 +1,69 @@
+{{#partial "content"}}
+
+    {{#if editPlace}}
+        <h3>Update {{editPlace.restaurantName}}:</h3>
+        <form method="post" action="/restaurants/{{editPlace.id}}">
+        <div class="form-group">
+            <label for="restaurantName">Restaurant Name:</label>
+            <input id="restaurantName" name="restaurantName" type="text" value="{{editPlace.restaurantName}}">
+        </div>
+        <div class="form-group">
+            <label for="neighborhood">Neighborhood:</label>
+            <input id="neighborhood" name="neighborhood" type="text" value="{{editPlace.neighborhood}}">
+        </div>
+        <div class="form-group">
+            <label for="genre">Food Genre</label>
+            <input id="genre" name="genre" type="text" value="{{editPlace.genre}}">
+        </div>
+        <div class="form-group">
+            <label for="favoriteDish">Favorite Dish:</label>
+            <input id="favoriteDish" name="favoriteDish" type="text" value="{{editPlace.favoriteDish}}">
+        </div>
+        <div class="form-group">
+            <span class="star-cb-group">
+              <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+              <input type="radio" id="rating-4" name="rating" value="4"  /><label for="rating-4">4</label>
+              <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+              <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+              <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+              <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+            </span>
+        </div>
+    {{else}}
+        <h3>Add a new restaurant:</h3>
+        <form method="post" action="/restaurants/new">
+        <div class="form-group">
+            <label for="restaurantName">Restaurant Name:</label>
+            <input id="restaurantName" name="restaurantName" type="text">
+        </div>
+        <div class="form-group">
+            <label for="neighborhood">Neighborhood:</label>
+            <input id="neighborhood" name="neighborhood" type="text">
+        </div>
+        <div class="form-group">
+            <label for="genre">Food Genre</label>
+            <input id="genre" name="genre" type="text">
+        </div>
+        <div class="form-group">
+            <label for="favoriteDish">Favorite Dish:</label>
+            <input id="favoriteDish" name="favoriteDish" type="text">
+        </div>
+        <div class="form-group">
+            <span class="star-cb-group">
+              <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+              <input type="radio" id="rating-4" name="rating" value="4"  /><label for="rating-4">4</label>
+              <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+              <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+              <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+              <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+            </span>
+        </div>
+
+    {{/if}}
+        <button type="submit" class="btn btn-success">Submit!</button>
+    </form>
+
+
+{{/partial}}
+
+{{> layout.hbs}}
