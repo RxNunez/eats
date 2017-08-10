@@ -1,0 +1,21 @@
+{{#partial "content"}}
+    <h1>Check out our favorite Portland eats!</h1>
+
+    {{#if restaurants}}
+        {{#each restaurants}}
+            <p>{{restaurantName}}</p>
+            <ul>
+                <li>Neighborhood: {{neighborhood}}</li>
+                <li>Genre: {{genre}}</li>
+                <li>Favorite dish: {{favoriteDish}}</li>
+                <li>Rating: {{rating}}</li>
+            </ul>
+        {{/each}}
+    {{else}}
+        <p>No entries</p>
+    {{/if}}
+
+
+{{/partial}}
+
+{{> layout.hbs}}
