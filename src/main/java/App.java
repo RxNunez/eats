@@ -47,7 +47,7 @@ public class App {
         //post: Fix updated post
         post("/restaurants/:id",(request, response) -> {
             Map<String, Object>model = new HashMap<>();
-            ArrayList<Restaurant> listOfPlaces =Restaurant.getInstances();
+            ArrayList<Restaurant> listOfPlaces = Restaurant.getInstances();
             String restaurantName = request.queryParams("restaurantName");
             String neighborhood = request.queryParams("neighborhood");
             String genre = request.queryParams("genre");
@@ -57,6 +57,12 @@ public class App {
             Restaurant editPlace = Restaurant.findById(idOfPLace);
             editPlace.update(restaurantName, neighborhood,genre,favoriteDish,rating);
             model.put("restaurants", listOfPlaces);
+            return new ModelAndView(model,"index.hbs");
+        }, new HandlebarsTemplateEngine());
+        //get: delete all posts
+        get("/delete", (request, response) -> {
+            Map<String, Object>model = new HashMap<>();
+            Restaurant.clearAllRestaurants();;
             return new ModelAndView(model,"index.hbs");
         }, new HandlebarsTemplateEngine());
     }

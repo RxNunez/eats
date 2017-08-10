@@ -41,6 +41,7 @@ public class Restaurant {
     public void deleteEntry (int id) {
         instances.remove(Restaurant.findById(id));
     }
+
     public void update(String restaurantName, String neighborhood, String genre, String favoriteDish, int rating){
         this.favoriteDish= favoriteDish;
         this.neighborhood = neighborhood;
