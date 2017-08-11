@@ -65,7 +65,15 @@ public class RestaurantTest {
         Restaurant thirdFood = helper();
         ArrayList test = Restaurant.searchByNeighborhood("Downtown");
         assertEquals(2, test.size());
+    }
 
+    @Test
+    public void clearingList() throws Exception {
+        Restaurant testFood = helper();
+        Restaurant otherFood = new Restaurant("Tin Shed", "Northeast", "Brunch", "Egg scrambles", 5);
+        Restaurant thirdFood = helper();
+        ArrayList test = Restaurant.getGenres();
+        assertEquals(2, test.size());
     }
 
     public Restaurant helper(){

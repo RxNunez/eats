@@ -11,7 +11,17 @@
                 <option value="St Johns">St. Johns</option>
             </select>
         </div>
-        <!--<button type="submit" class="btn btn-success">Submit!</button>-->
+    </form>
+    <form action="/search" method="post">
+        <div class="form-group">
+            <label for="genre">Genre:</label>
+            <select id="genre" name="genre" onchange="this.form.submit()">
+                <option>Select...</option>
+                    {{#each genres}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+            </select>
+        </div>
     </form>
 
     {{#if restaurants}}
@@ -24,6 +34,18 @@
                     <li>Rating: {{rating}}</li>
                 </ul>
             {{/each}}
+
+    {{/if}}
+    {{#if genreList}}
+        {{#each genreList}}
+            <h4>{{restaurantName}}</h4>
+            <ul>
+                <li>Neighborhood: {{neighborhood}}</li>
+                <li>Genre: {{genre}}</li>
+                <li>Favorite dish: {{favoriteDish}}</li>
+                <li>Rating: {{rating}}</li>
+            </ul>
+        {{/each}}
 
     {{/if}}
 
