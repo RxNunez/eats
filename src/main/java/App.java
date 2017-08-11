@@ -85,14 +85,21 @@ public class App {
         //Go to search page
         get("/search",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            ArrayList<String> listOfGenres = Restaurant.getGenres();
+            model.put("genres", listOfGenres);
             return new ModelAndView(model,"search.hbs");
         }, new HandlebarsTemplateEngine());
         //Post: generate search results based on form input
         post("/search", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String formInput = request.queryParams("neighborhood");
+            String genreInput = request.queryParams("genre");
             ArrayList<Restaurant> listOfPlaces = Restaurant.searchByNeighborhood(formInput);
+            ArrayList<Restaurant> genrePlaces = Restaurant.searchByGenre(genreInput);
+            ArrayList<String> listOfGenres = Restaurant.getGenres();
+            model.put("genres", listOfGenres);
             model.put("restaurants", listOfPlaces);
+            model.put("genreList", genrePlaces);
             return new ModelAndView(model,"search.hbs");
         }, new HandlebarsTemplateEngine());
     }

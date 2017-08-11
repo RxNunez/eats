@@ -13,12 +13,14 @@ public class Restaurant {
     private int id;
     private static int increment = 0;
     private static ArrayList<Restaurant> instances = new ArrayList<>();
+    private static ArrayList<String> genres = new ArrayList<>();
 
     public Restaurant(String restaurantName, String neighborhood, String genre, String favoriteDish, int rating){
         this.favoriteDish= favoriteDish;
         this.neighborhood = neighborhood;
         this.rating = rating;
         this.genre = genre;
+        genres.add(this.genre);
         this.restaurantName = restaurantName;
         instances.add(this);
         increment++;
@@ -42,6 +44,15 @@ public class Restaurant {
         ArrayList<Restaurant> test = new ArrayList<>();
         for (Restaurant instance : instances){
             if(instance.getNeighborhood().equals(neighborhood)){
+                test.add(instance);
+            }
+        }
+        return test;
+    }
+    public static ArrayList<Restaurant> searchByGenre(String genre){
+        ArrayList<Restaurant> test = new ArrayList<>();
+        for (Restaurant instance : instances){
+            if(instance.getGenre().equals(genre)){
                 test.add(instance);
             }
         }
@@ -81,6 +92,17 @@ public class Restaurant {
     public static ArrayList<Restaurant> getInstances() {
         return instances;
     }
+
+    public static ArrayList<String> getGenres() {
+        ArrayList<String> genresMenu = new ArrayList<>();
+        for (String genre: genres) {
+            if(!genresMenu.contains(genre)){
+                genresMenu.add(genre);
+            }
+        }
+        return genresMenu;
+    }
+
 
     public int getId() {
         return id;
