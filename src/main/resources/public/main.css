@@ -8,8 +8,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Vollkorn', cursive;
 }
  .footer {
      position: fixed;
      bottom: 0;
+ }
+ h1, h2, h3{
+    font-family: 'Unica One', serif;
+    text-align: center;
  }
